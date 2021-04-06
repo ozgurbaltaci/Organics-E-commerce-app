@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "107608393601",
+    "project_id": "mporganicmarketproject",
+    "storage_bucket": "mporganicmarketproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107608393601:android:5e47f843af1b79b1908a80",
+        "android_client_info": {
+          "package_name": "com.example.mp_organicmarketproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107608393601-69g96l8ssl94f6c6473ir9cbjrr414ac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA47fhzrZCZaskTO8WAOmrlyskYuhny0SU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107608393601-69g96l8ssl94f6c6473ir9cbjrr414ac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
