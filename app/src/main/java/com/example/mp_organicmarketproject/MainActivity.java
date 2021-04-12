@@ -13,6 +13,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 /**
  * @since 05/04/2021
  * @author Ozgur Baltaci
@@ -26,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth myAuth;
 
     ViewPager viewPager;
+    CircleIndicator circleSlider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.viewPager);
-
+        circleSlider = findViewById(R.id.circleSlider);
         List<Integer> imageList = new ArrayList<>();
 
 
@@ -44,5 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         AdapterHome adapterHome = new AdapterHome(imageList);
         viewPager.setAdapter(adapterHome);
+        circleSlider.setViewPager(viewPager);
     }
 }
