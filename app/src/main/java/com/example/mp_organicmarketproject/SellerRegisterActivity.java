@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
  * @since 05/04/2021
  * @author Ozgur Baltaci
  * @author Sevinc Ekin
+ * hede
  * Seller Register Activity
  */
 
