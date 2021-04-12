@@ -31,9 +31,10 @@ public class AdapterHome extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.image_layout, container, false);
-        ImageView image = view.findViewById(R.id.imageView);
+        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.catogeryimagelayout, container, false);
+        ImageView image = view.findViewById(R.id.productImage);
         image.setImageResource(list.get(position));
+
 
         container.addView(view);
         return view;
