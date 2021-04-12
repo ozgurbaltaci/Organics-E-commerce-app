@@ -13,14 +13,14 @@ import java.util.List;
 
 public class AdapterHome extends PagerAdapter {
 
-    List<Integer> list;
+    List<Integer> listItems;
 
     AdapterHome(List<Integer> imageList){
-        this.list = imageList;
+        this.listItems = imageList;
     }
     @Override
     public int getCount() {
-        return list.size();
+        return listItems.size();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class AdapterHome extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.catogeryimagelayout, container, false);
         ImageView image = view.findViewById(R.id.productImage);
-        image.setImageResource(list.get(position));
+        image.setImageResource(listItems.get(position));
 
 
         container.addView(view);
