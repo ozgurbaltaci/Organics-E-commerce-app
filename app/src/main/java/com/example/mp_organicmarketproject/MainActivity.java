@@ -1,6 +1,7 @@
 package com.example.mp_organicmarketproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @since 05/04/2021
@@ -21,23 +25,24 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth myAuth;
 
+    ViewPager viewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myAuth = FirebaseAuth.getInstance();
-    }
+        viewPager = findViewById(R.id.viewPager);
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        TextView textViewUser = (TextView) findViewById(R.id.main_TextViewUser);
-        textViewUser.setText("Welcome to the Organic Market, "+ myAuth.getCurrentUser().getEmail());
-    }
+        List<Integer> imageList = new ArrayList<>();
 
-    public void logout(View view){
-        myAuth.signOut();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+
+        imageList.add(R.drawable.image2);
+        imageList.add(R.drawable.image6);
+        imageList.add(R.drawable.image3);
+        imageList.add(R.drawable.image4);
+        imageList.add(R.drawable.image5);
+        imageList.add(R.drawable.image1);
+
+        AdapterHome adapterHome = new AdapterHome(imageList);
+        viewPager.setAdapter(adapterHome);
     }
 }
