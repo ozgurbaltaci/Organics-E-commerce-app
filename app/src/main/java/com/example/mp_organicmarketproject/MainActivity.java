@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,5 +50,11 @@ public class MainActivity extends AppCompatActivity {
         AdapterHome adapterHome = new AdapterHome(imageList);
         viewPager.setAdapter(adapterHome);
         circleSlider.setViewPager(viewPager);
+
+        GridView gridView = findViewById(R.id.userHomePageGrid);
+        gridView.setAdapter(new CategoriesAdapter(this));
     }
+
+
+
 }
