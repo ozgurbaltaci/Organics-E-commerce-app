@@ -10,10 +10,12 @@ import android.widget.ImageView;
 public class CategoriesAdapter extends BaseAdapter {
 
 
-    private Context mContext;
+    private Context context;
     public CategoriesAdapter(Context c) {
-        mContext = c;
+        context = c;
     }
+
+
     public int getCount() {
         return mThumbIds.length;
     }
@@ -23,11 +25,13 @@ public class CategoriesAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
-    // create a new ImageView for each item referenced by the Adapter
+
+
+
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) {
-            imageView = new ImageView(mContext);
+            imageView = new ImageView(context);
             imageView.setLayoutParams(new GridView.LayoutParams(300, 300));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(30, 5, 30, 5);
