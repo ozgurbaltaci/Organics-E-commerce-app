@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MP_OrganicMarketProject</string>
+    <string name="user_profile">User Profile</string>
+    <string name="user_favorites">User Favorites</string>
+    <string name="user_search">User Search</string>
+    <string name="user_cart">User Cart</string>
+
+    <string name="homePagetext">Home Page</string>
+    <string name="searchText">Search</string>
+    <string name="favoritesText">Favorites</string>
+    <string name="cartText">Cart</string>
+    <string name="profileText">Profile</string>
+
+
 </resources>

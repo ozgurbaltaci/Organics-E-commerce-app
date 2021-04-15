@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -25,11 +26,9 @@ import me.relex.circleindicator.CircleIndicator;
  */
 public class MainActivity extends AppCompatActivity {
 
-
-    private FirebaseAuth myAuth;
-
     ViewPager viewPager;
     CircleIndicator circleSlider;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +36,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.viewPager);
         circleSlider = findViewById(R.id.circleSlider);
+
+        tabLayout = findViewById(R.id.bottomBar);
+        viewPager = findViewById(R.id.viewPager);
+
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.homePagetext));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.searchText));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.favoritesText));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.cartText));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.profileText));
+
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         List<Integer> imageList = new ArrayList<>();
 
 

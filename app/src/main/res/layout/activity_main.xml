@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="342dp"
@@ -57,68 +56,65 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView">
 
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circleSlider"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="150dp" />
+            android:layout_marginTop="150dp" >
+
+        </me.relex.circleindicator.CircleIndicator>
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="413dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="10dp"
-        android:background="#89E38C"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout4"-->
+<!--        android:layout_width="413dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="#89E38C"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid">-->
 
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="82.6dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton3"-->
+<!--            android:layout_width="82.6dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/ic_baseline_home_24" />-->
 
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="82.6dp"
-            android:layout_height="55dp"
-            android:contentDescription="TODO"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_baseline_search_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton4"-->
+<!--            android:layout_width="82.6dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:contentDescription="TODO"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/ic_baseline_search_24" />-->
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="82.6dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_baseline_favorite_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton2"-->
+<!--            android:layout_width="82.6dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/ic_baseline_favorite_24" />-->
 
-        <ImageButton
-            android:id="@+id/imageButton5"
-            android:layout_width="82.6dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton5"-->
+<!--            android:layout_width="82.6dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />-->
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="82.6dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_baseline_person_24" />
-    </LinearLayout>
+<!--        <ImageButton-->
+<!--            android:id="@+id/imageButton"-->
+<!--            android:layout_width="82.6dp"-->
+<!--            android:layout_height="55dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/ic_baseline_person_24" />-->
+<!--    </LinearLayout>-->
 
 
     <TextView
@@ -134,6 +130,26 @@
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="393dp"
+        android:layout_height="672dp"
+        android:layout_above="@id/bottomBar"
+        android:layout_centerInParent="true"
+        tools:ignore="MissingConstraints" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
