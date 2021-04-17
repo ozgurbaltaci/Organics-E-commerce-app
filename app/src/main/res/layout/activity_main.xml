@@ -1,98 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="342dp"
-        android:layout_height="34dp"
-        android:background="#DBD6E1"
-        android:queryHint="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.034" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
-        android:text="Organics"
-        android:textColor="#24CA08"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <GridView
-        android:id="@+id/userHomePageGrid"
-        android:layout_width="391dp"
-        android:layout_height="169dp"
-        android:layout_marginTop="8dp"
-        android:numColumns="3"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="418dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/circleSlider"
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_marginTop="110dp" />
-
-    </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="113dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/pacifico"
-        android:text="Categories"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UserHomePageButton">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="26dp"
+        android:layout_width="396dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="2dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPager2"
         app:tabBackground="@color/teal_700"
@@ -103,21 +25,15 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager2"
-        android:layout_width="377dp"
-        android:layout_height="108dp"
+        android:layout_width="393dp"
+        android:layout_height="643dp"
         android:layout_below="@id/bottomBar"
         android:layout_centerInParent="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid"
-        app:layout_constraintVertical_bias="0.712"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
     </androidx.viewpager.widget.ViewPager>
