@@ -43,17 +43,31 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.bottomBar);
         viewPager2 = findViewById(R.id.viewPager2);
 
+
+        /*
         tabLayout.addTab(tabLayout.newTab().setText(R.string.homePagetext));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.searchText));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.favoritesText));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.cartText));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.profileText));
+*/
+
+
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_home_24));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_search_24));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_favorite_24));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_shopping_cart_24));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_person_24));
+
+
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager2.setAdapter(adapter);
         viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

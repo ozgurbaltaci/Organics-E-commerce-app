@@ -37,20 +37,19 @@
 
     <GridView
         android:id="@+id/userHomePageGrid"
-        android:layout_width="319dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="391dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="8dp"
         android:numColumns="3"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="420dp"
-        android:layout_height="124dp"
+        android:layout_width="418dp"
+        android:layout_height="148dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,40 +65,40 @@
             android:id="@+id/circleSlider"
             android:layout_width="match_parent"
             android:layout_height="24dp"
-            android:layout_marginTop="100dp" />
+            android:layout_marginTop="110dp" />
 
     </RelativeLayout>
-
-
 
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="113dp"
         android:layout_height="44dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/pacifico"
         android:text="Categories"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
-
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="26dp"
+        android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+        app:tabBackground="@color/teal_700"
+        app:tabIconTint="@color/teal_200"
+        app:tabIndicatorColor="@color/teal_200"
+        app:tabTextColor="#FFFFFF"
         tools:ignore="MissingConstraints" />
 
     <androidx.viewpager.widget.ViewPager
