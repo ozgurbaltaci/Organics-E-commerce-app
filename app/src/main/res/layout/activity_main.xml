@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="342dp"
@@ -36,8 +37,8 @@
 
     <GridView
         android:id="@+id/userHomePageGrid"
-        android:layout_width="375dp"
-        android:layout_height="211dp"
+        android:layout_width="319dp"
+        android:layout_height="164dp"
         android:layout_marginTop="16dp"
         android:numColumns="3"
         android:orientation="vertical"
@@ -48,73 +49,28 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_width="420dp"
+        android:layout_height="124dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView">
 
 
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circleSlider"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="150dp" >
-
-        </me.relex.circleindicator.CircleIndicator>
+            android:layout_height="24dp"
+            android:layout_marginTop="100dp" />
 
     </RelativeLayout>
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout4"-->
-<!--        android:layout_width="413dp"-->
-<!--        android:layout_height="55dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:background="#89E38C"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid">-->
 
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton3"-->
-<!--            android:layout_width="82.6dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_baseline_home_24" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton4"-->
-<!--            android:layout_width="82.6dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:contentDescription="TODO"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_baseline_search_24" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton2"-->
-<!--            android:layout_width="82.6dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_baseline_favorite_24" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton5"-->
-<!--            android:layout_width="82.6dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_baseline_shopping_cart_24" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/imageButton"-->
-<!--            android:layout_width="82.6dp"-->
-<!--            android:layout_height="55dp"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:srcCompat="@drawable/ic_baseline_person_24" />-->
-<!--    </LinearLayout>-->
 
 
     <TextView
@@ -136,20 +92,36 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="393dp"
-        android:layout_height="672dp"
-        android:layout_above="@id/bottomBar"
+        android:id="@+id/viewPager2"
+        android:layout_width="377dp"
+        android:layout_height="108dp"
+        android:layout_below="@id/bottomBar"
         android:layout_centerInParent="true"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userHomePageGrid"
+        app:layout_constraintVertical_bias="0.712"
+        tools:ignore="MissingConstraints">
 
+    </androidx.viewpager.widget.ViewPager>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

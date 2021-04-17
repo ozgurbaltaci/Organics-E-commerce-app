@@ -28,6 +28,7 @@ import me.relex.circleindicator.CircleIndicator;
 public class MainActivity extends AppCompatActivity {
 
     ViewPager viewPager;
+    ViewPager viewPager2;
     CircleIndicator circleSlider;
     TabLayout tabLayout;
 
@@ -35,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         viewPager = findViewById(R.id.viewPager);
         circleSlider = findViewById(R.id.circleSlider);
 
         tabLayout = findViewById(R.id.bottomBar);
-        viewPager = findViewById(R.id.viewPager);
+        viewPager2 = findViewById(R.id.viewPager2);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.homePagetext));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.searchText));
@@ -50,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final MyAdapter adapter = new MyAdapter(this,getSupportFragmentManager(),tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        viewPager2.setAdapter(adapter);
+        viewPager2.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+                viewPager2.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -68,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        List<Integer> imageList = new ArrayList<>();
 
+
+        List<Integer> imageList = new ArrayList<>();
 
         imageList.add(R.drawable.image2);
         imageList.add(R.drawable.image6);
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         imageList.add(R.drawable.image4);
         imageList.add(R.drawable.image5);
         imageList.add(R.drawable.image1);
+
+
 
         AdapterHome adapterHome = new AdapterHome(imageList);
         viewPager.setAdapter(adapterHome);

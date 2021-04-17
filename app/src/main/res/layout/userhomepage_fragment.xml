@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".UserProfileButton">
+    tools:context=".UserHomePageButton">
 
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/user_cart"
+        android:text="@string/homePagetext"
         android:textSize="24sp" />
 
 
