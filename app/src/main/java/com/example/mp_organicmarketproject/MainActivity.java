@@ -23,6 +23,7 @@ import me.relex.circleindicator.CircleIndicator;
  * @author Sevinc Ekin
  * Main Activity
  * Note - It will be update
+ * homepage-2
  */
 public class MainActivity extends AppCompatActivity {
 
