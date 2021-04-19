@@ -35,6 +35,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylePencere"
+        android:layout_width="408dp"
+        android:layout_height="194dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/userHomePageGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="0.0" />
+
     <GridView
         android:id="@+id/userHomePageGrid"
         android:layout_width="390dp"
@@ -49,41 +63,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.178" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="418dp"
-        android:layout_height="148dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView">
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/circleSlider"
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_marginTop="110dp" />
-
-    </RelativeLayout>
-
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="113dp"
         android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/pacifico"
         android:text="Categories"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/recylePencere" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
