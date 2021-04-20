@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -33,8 +36,14 @@ public class UserHomePageButton extends Fragment {
     TabLayout tabLayout;
     RecyclerView recyclerView;
     List<Integer> imageList;
+    private RecyclerView categoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private List<Category> cCategories;
+
     RecyclerView.LayoutManager recyclerManager;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+
 
 
     public UserHomePageButton(){
@@ -50,20 +59,17 @@ public class UserHomePageButton extends Fragment {
 
         View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
 
-
-
         recyclerView = v.findViewById(R.id.recylePencere);
         recyclerManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(recyclerManager);
 
-
-
         //circleSlider = v.findViewById(R.id.circleSlider);
         readDatabase();
+        showCategories(v);
 
 
-        GridView gridView = v.findViewById(R.id.userHomePageGrid);
-        gridView.setAdapter(new CategoriesAdapter(this.getContext()));
+//        GridView gridView = v.findViewById(R.id.userHomePageGrid);
+//        gridView.setAdapter(new CategoriesAdapter(this.getContext()));
         return v;
 
     }
@@ -104,7 +110,36 @@ public class UserHomePageButton extends Fragment {
 
 
     }
-}
+    public void showCategories(View v){
+        categoryRecyclerView= v.findViewById(R.id.category_view);
+        categoryRecyclerView.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this.getContext(),3);
+        categoryRecyclerView.setLayoutManager(mLayoutManager);
+        cCategories = new ArrayList<>();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+                    Category category = postSnapshot.getValue(Category.class);
+                    cCategories.add(category);
+                }
+                categoryAdapter = new CategoryAdapter(getContext(),cCategories);
+                categoryRecyclerView.setAdapter(categoryAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(),error.getMessage(), Toast.LENGTH_LONG);
+
+            }
+        });
+    }
+
+    }
+
 
 
 
