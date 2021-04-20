@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyViewHolder> {
+public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyCustomizeViewHolder> {
 
     private List<Slider> listItems;
     public AdapterHome(List<Slider> imageList){
@@ -24,18 +23,18 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyViewHolder> 
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyCustomizeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.catogeryimagelayout, null);
-        return new MyViewHolder(itemView);
+        return new MyCustomizeViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyCustomizeViewHolder holder, int position) {
 
 
-        Picasso.get().load(listItems.get(position).getImageURL()).into(holder.imgIcon);
-        holder.title.setText(listItems.get(position).getTitle());
+        Picasso.get().load(listItems.get(position).getImageURL()).into(holder.imagePhotos);
+        holder.textTitleOfCampaign.setText(listItems.get(position).getTitle());
 
     }
 
@@ -45,15 +44,14 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyViewHolder> 
         return listItems.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyCustomizeViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title;
-        ImageView imgIcon;
-        public MyViewHolder(View itemView) {
+        TextView textTitleOfCampaign;
+        ImageView imagePhotos;
+        public MyCustomizeViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.textView9);
-
-            imgIcon = (ImageView) itemView.findViewById(R.id.productImage);
+            textTitleOfCampaign = (TextView) itemView.findViewById(R.id.textView9);
+            imagePhotos = (ImageView) itemView.findViewById(R.id.productImage);
 
 
 
