@@ -22,7 +22,7 @@
         android:id="@+id/memberSignUp_RegisterButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="createUser"
+        android:onClick="goLoginFromRegister"
         android:text="Sign Up"
         app:backgroundTint="#24CA08"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +33,49 @@
         app:layout_constraintVertical_bias="0.86" />
 
     <TextView
+        android:id="@+id/memberSignUp_SellerSignUp3"
+        android:layout_width="158dp"
+        android:layout_height="21dp"
+        android:clickable="true"
+        android:onClick="createSeller"
+        android:text="Seller Sign Up"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.921" />
+
+    <TextView
+        android:id="@+id/loginLinkFromRegister"
+        android:layout_width="120dp"
+        android:layout_height="21dp"
+        android:clickable="true"
+        android:onClick="goLoginFromRegister"
+        android:text="Go to Login"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
+
+    <TextView
+        android:id="@+id/doYouHaveAccount"
+        android:layout_width="216dp"
+        android:layout_height="22dp"
+        android:text="Do you have already an account ?"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.963" />
+
+    <TextView
         android:id="@+id/textView3"
         android:layout_width="98dp"
         android:layout_height="24dp"
@@ -40,25 +83,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.281"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
-
-    <TextView
-        android:id="@+id/memberSignUp_SellerSignUp3"
-        android:layout_width="117dp"
-        android:layout_height="27dp"
-        android:clickable="true"
-        android:onClick="createSeller"
-        android:text="Seller Sign Up"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.655"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.925" />
 
     <EditText
         android:id="@+id/memberSignUp_Phone1"

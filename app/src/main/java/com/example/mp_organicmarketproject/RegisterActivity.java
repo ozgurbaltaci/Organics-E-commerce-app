@@ -44,10 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(goToSellerRegister);
     }
 
-
-
-
-
+    public void goLoginFromRegister (View view){
+        Intent goToLoginFromRegister = new Intent (this,LoginActivity.class);
+        startActivity(goToLoginFromRegister);
+    }
 
 
     public void createUser(View view){
