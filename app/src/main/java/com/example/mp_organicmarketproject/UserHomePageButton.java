@@ -112,7 +112,9 @@ public class UserHomePageButton extends Fragment {
     }
     public void showCategories(View v){
         categoryRecyclerView= v.findViewById(R.id.category_view);
+        categoryRecyclerView.setNestedScrollingEnabled(false);
         categoryRecyclerView.setHasFixedSize(true);
+
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this.getContext(),3);
         categoryRecyclerView.setLayoutManager(mLayoutManager);
