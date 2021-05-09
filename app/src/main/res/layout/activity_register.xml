@@ -22,7 +22,7 @@
         android:id="@+id/memberSignUp_RegisterButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="goLoginFromRegister"
+        android:onClick="createUser"
         android:text="Sign Up"
         app:backgroundTint="#24CA08"
         app:layout_constraintBottom_toBottomOf="parent"

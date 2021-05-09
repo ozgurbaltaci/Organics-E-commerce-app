@@ -33,8 +33,8 @@ public class UserProfileButton extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup viewGroup, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.userprofile_fragment, viewGroup, false);
-        TextView output= (TextView)view.findViewById(R.id.main_TextViewUser);
-        output.setText("User Profile Fragment");
+        //TextView output= (TextView)view.findViewById(R.id.main_TextViewUser);
+        //output.setText("User Profile Fragment");
 
         Button button = (Button)view.findViewById(R.id.main_buttonLogout);
         button.setOnClickListener(new View.OnClickListener() {

@@ -10,11 +10,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import com.example.mp_organicmarketproject.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -29,6 +33,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth myAuth;
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,15 +62,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         EditText editTextPassword = findViewById(R.id.memberSignUp_password1);
         String password = editTextPassword.getText().toString();
+
         EditText editTextConfirmPassword = findViewById(R.id.memberSignUp_confirmedPassword1);
         String confirmedPassword = editTextConfirmPassword.getText().toString();
 
-
-
-
-
         EditText editText = (EditText) findViewById(R.id.memberSignUp_Name1);
         String name = editText.getText().toString();
+
         EditText editText2 = (EditText) findViewById(R.id.memberSignUp_Surname1);
         String surname = editText2.getText().toString();
 
@@ -88,6 +91,9 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+
+        User userInfo = new User(name,surname,phoneNumber);
+
         if(!password.equals(confirmedPassword)){
             Toast.makeText(RegisterActivity.this,"Password and Confirm Password doesn't match.", Toast.LENGTH_SHORT).show();
         }
@@ -102,6 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (task.isSuccessful()){
                                 FirebaseUser user = myAuth.getCurrentUser();
+                                databaseReference = FirebaseDatabase.getInstance().getReference();
+                                databaseReference.child("users").child(user.getUid()).setValue(userInfo);
+
                                 System.out.println(user.getEmail());
 
                                 startActivity(mainIntent);

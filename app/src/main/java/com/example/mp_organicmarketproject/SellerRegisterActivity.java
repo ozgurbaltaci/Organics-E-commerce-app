@@ -3,17 +3,22 @@ package com.example.mp_organicmarketproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mp_organicmarketproject.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * @since 05/04/2021
  * @author Ozgur Baltaci
@@ -25,6 +30,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class SellerRegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth myAuth;
+    private DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +68,27 @@ public class SellerRegisterActivity extends AppCompatActivity {
             return;
         }
 
+        User sellerInfo = new User(sellerTitle,sellerPhone,sellerAdress);
 
 
         if (!sellerPassword.equals(sellerConfirmedPassword)) {
             Toast.makeText(SellerRegisterActivity.this, "Password and Confirm Password doesn't match.", Toast.LENGTH_SHORT).show();
         } else {
+            Intent mainIntent = new Intent(this, MainActivity.class);
+
             myAuth.createUserWithEmailAndPassword(sellerMail, sellerPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         FirebaseUser seller = myAuth.getCurrentUser();
+                        databaseReference = FirebaseDatabase.getInstance().getReference();
+                        databaseReference.child("sellers").child(seller.getUid()).setValue(sellerInfo);
+
+
+                        startActivity(mainIntent);
+
+
+
                     } else
                         Toast.makeText(SellerRegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }

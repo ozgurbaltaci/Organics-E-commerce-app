@@ -1,43 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".UserProfileButton">
 
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/user_profile"
-        android:textSize="24sp" />
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Organics"
+        android:textColor="#24CA08"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/main_buttonLogout"
         android:layout_width="134dp"
         android:layout_height="wrap_content"
-        android:layout_margin="120dp"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
         android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.379" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.598" />
 
-    <TextView
-        android:id="@+id/main_TextViewUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to the Organic Market"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="360dp"
+        android:layout_height="376dp"
+        android:layout_marginTop="72dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_favorite_24"
+            android:drawableTint="#E33957"
+            android:padding="10dp"
+            android:text="My Favorite List"
+            android:textColor="#E33957" />
 
-</FrameLayout>
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_support_agent_24"
+            android:drawableTint="#E33957"
+            android:paddingLeft="15dp"
+            android:text="Customer Support"
+            android:textColor="#E33957" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_question_answer_24"
+            android:drawableTint="#E33957"
+            android:padding="10dp"
+            android:text="FAQ"
+            android:textColor="#E33957" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_settings_24"
+            android:drawablePadding="15dp"
+            android:drawableTint="#E33957"
+            android:padding="10dp"
+            android:text="Settings"
+            android:textColor="#E33957" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_delivery_dining_24"
+            android:drawableTint="#E33957"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="My Orders"
+            android:textColor="#E33957" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
