@@ -18,14 +18,14 @@
 
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="406dp"
+        android:layout_width="360dp"
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="400dp"
+        android:layout_width="300dp"
         android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
