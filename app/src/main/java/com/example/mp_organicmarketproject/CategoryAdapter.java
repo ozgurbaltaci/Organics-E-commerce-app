@@ -1,7 +1,7 @@
 package com.example.mp_organicmarketproject;
 
 import android.content.Context;
-import android.media.Image;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +42,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ImageV
         Picasso.get().load(categoryCur.getCategoryPhoto()).placeholder(R.drawable.imagepreview)
                 .fit().centerCrop().into(holder.categoryPhoto);
 
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent showingProductsIntent = new Intent (context, ProductsActivity.class);
+                showingProductsIntent.putExtra("Category", categoryCur.getCategoryName());
+                context.startActivity(showingProductsIntent);
+            }
+        });
+
     }
 
     @Override
@@ -53,12 +62,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ImageV
         public TextView categoryName;
         public ImageView categoryPhoto;
         public LinearLayout iconWrapper;
+        View view;
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.categoryName = itemView.findViewById(R.id.categoryName);
+            this.categoryName = itemView.findViewById(R.id.ProductCategoryName);
             this.categoryPhoto = itemView.findViewById(R.id.categoryPhoto);
             iconWrapper = itemView.findViewById(R.id.iconWrapper);
+            view = itemView;
 
         }
 
