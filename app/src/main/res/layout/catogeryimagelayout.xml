@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="50dp"
+    app:cardCornerRadius=".1in"
+    android:layout_margin="2dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_height="280dp"
     >
 
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
     <ImageView
         android:id="@+id/productImage"
-        android:layout_width="match_parent"
-        android:layout_height="179dp"
+        android:layout_width="406dp"
+        android:layout_height="200dp"
         android:scaleType="fitXY"
-        android:src="@drawable/driedfruits" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="400dp"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:text="TextView" />
 
-</LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,5 +1,4 @@
 
-
 package com.example.mp_organicmarketproject;
 
 import android.view.LayoutInflater;
@@ -14,6 +13,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyCustomizeViewHolder> {
+
+
+    private List<Slider> listItems;
+    public AdapterHome(List<Slider> imageList){
+        this.listItems = imageList;
+    }
+
+    @Override
+    public MyCustomizeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.catogeryimagelayout, null);
+        return new MyCustomizeViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyCustomizeViewHolder holder, int position) {
+
+        Picasso.get()
+                .load(listItems.get(position).getImageURL())
+                .fit().centerCrop().into(holder.imagePhotos);
+
+
+        holder.textTitleOfCampaign.setText(listItems.get(position).getTitle());
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return listItems.size();
+    }
+
+    public class MyCustomizeViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textTitleOfCampaign;
+        ImageView imagePhotos;
+        public MyCustomizeViewHolder(View itemView) {
+            super(itemView);
+            textTitleOfCampaign = (TextView) itemView.findViewById(R.id.textView9);
+            imagePhotos = (ImageView) itemView.findViewById(R.id.productImage);
+
+
+
+        }
+    }
+}
+
+
+
+/*
 
 public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyCustomizeViewHolder> {
 
@@ -58,6 +109,26 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.MyCustomizeVie
         }
     }
 }
+
+
+
+
+
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
 
 
 //

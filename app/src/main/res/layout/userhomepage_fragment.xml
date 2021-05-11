@@ -6,71 +6,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".UserHomePageButton"
-    >
-
-
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="342dp"
-        android:layout_height="34dp"
-        android:background="#DBD6E1"
-        android:queryHint="Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
-        android:text="Organics"
-        android:textColor="#24CA08"
-        android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".UserHomePageButton"
+        >
 
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recylePencere"
-    android:layout_width="408dp"
-    android:layout_height="194dp"
-    android:layout_marginTop="20dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.428"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="342dp"
+            android:layout_height="34dp"
+            android:background="#DBD6E1"
+            android:queryHint="Search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pacifico"
+            android:text="Organics"
+            android:textColor="#24CA08"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-<TextView
-    android:id="@+id/textView10"
-    android:layout_width="113dp"
-    android:layout_height="44dp"
-    android:layout_marginTop="28dp"
-    android:fontFamily="@font/pacifico"
-    android:text="Categories"
-    android:textColor="#000000"
-    android:textSize="24sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/recylePencere" />
+        <LinearLayout
+            android:id="@+id/linearLayoutRecycler"
+            android:layout_width="409dp"
+            android:layout_height="231dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/category_view"
-        android:layout_width="359dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recylePencere"
+                android:layout_width="385dp"
+                android:layout_height="176dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:clipToPadding="false" />
+        </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="116dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/pacifico"
+            android:text="Categories"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRecycler" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/category_view"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

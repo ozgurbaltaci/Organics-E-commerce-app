@@ -1,6 +1,7 @@
 package com.example.mp_organicmarketproject;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,373 @@ import java.util.List;
 import me.relex.circleindicator.CircleIndicator;
 
 public class UserHomePageButton extends Fragment {
+
+    RecyclerView recyclerView;
+    AdapterHome adapterHome;
+    List<Slider> imageList;
+    DatabaseReference myRef1;
+
+    private RecyclerView categoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private List<Category> cCategories;
+
+
+
+
+    RecyclerView.LayoutManager recyclerManager;
+
+
+
+
+
+    public UserHomePageButton(){
+
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        imageList = new ArrayList<>();
+        View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
+
+
+        setAdapter(v);
+        readDatabase();
+
+
+
+
+
+        showCategories(v);
+
+
+     return v;
+
+    }
+
+    private void setAdapter(View v) {
+        recyclerView = v.findViewById(R.id.recylePencere);
+        recyclerView.setHasFixedSize(true);
+        recyclerManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, true);
+        recyclerView.setLayoutManager(recyclerManager);
+    }
+
+
+    private void readDatabase() {
+
+
+        myRef1 = FirebaseDatabase.getInstance().getReference("Slider");
+
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot data: snapshot.getChildren()) {
+                    imageList.add(new Slider(data.child("title").getValue().toString(), data.child("image").getValue().toString()));
+
+                }
+
+                adapterHome = new AdapterHome(imageList);
+                recyclerView.setAdapter(adapterHome);
+                timer1();
+
+
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+    }
+
+
+    public void timer1(){
+        final int interval_time = 5000;
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            int count = 0;
+            @Override
+            public void run() {
+                if(count<imageList.size()){
+                    recyclerView.scrollToPosition(count++);
+                    handler.postDelayed(this, interval_time);
+                    if(count==imageList.size()){
+                        count=0;
+                    }
+                }
+
+            }
+        };
+        handler.postDelayed(runnable, interval_time);
+    }
+    public void showCategories(View v){
+        categoryRecyclerView= v.findViewById(R.id.category_view);
+        categoryRecyclerView.setNestedScrollingEnabled(false);
+        categoryRecyclerView.setHasFixedSize(true);
+
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this.getContext(),3);
+        categoryRecyclerView.setLayoutManager(mLayoutManager);
+        cCategories = new ArrayList<>();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+                    Category category = postSnapshot.getValue(Category.class);
+                    cCategories.add(category);
+                }
+                categoryAdapter = new CategoryAdapter(getContext(),cCategories);
+                categoryRecyclerView.setAdapter(categoryAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(),error.getMessage(), Toast.LENGTH_LONG);
+
+            }
+        });
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class UserHomePageButton extends Fragment {
+
+    RecyclerView recyclerView;
+    AdapterHome adapterHome;
+    List<Slider> imageList1;
+
+    private RecyclerView categoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private List<Category> cCategories;
+    DatabaseReference myRef1;
+
+    RecyclerView.LayoutManager recyclerManager;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+
+
+    public UserHomePageButton(){
+
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        imageList1 = new ArrayList<>();
+
+
+        View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
+
+
+
+        readDatabase();
+        setAdapter(v);
+
+
+
+
+        showCategories(v);
+
+
+        return v;
+
+    }
+
+    private void setAdapter(View v) {
+
+        recyclerView = v.findViewById(R.id.recylePencere);
+        recyclerView.setHasFixedSize(true);
+        recyclerManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
+        recyclerView.setLayoutManager(recyclerManager);
+        adapterHome = new AdapterHome(imageList1);
+        recyclerView.setAdapter(adapterHome);
+
+        final int interval_time = 50;
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            int count = 0;
+            @Override
+            public void run() {
+                if(count<imageList1.size()){
+                    recyclerView.scrollToPosition(count++);
+                    handler.postDelayed(this, interval_time);
+                    if(count==imageList1.size()){
+                        count=0;
+                    }
+                }
+
+            }
+        };
+        handler.postDelayed(runnable, interval_time);
+
+
+
+    }
+
+
+    private void readDatabase() {
+
+        imageList1 = new ArrayList<>();
+
+         myRef1 = firebaseDatabase.getReference("Slider");
+
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot data: snapshot.getChildren()) {
+
+                    imageList1.add(new Slider(data.child("title").getValue().toString(), data.child("image").getValue().toString()));
+
+
+                }
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
+    public void showCategories(View v){
+        categoryRecyclerView= v.findViewById(R.id.category_view);
+        categoryRecyclerView.setNestedScrollingEnabled(true);
+        categoryRecyclerView.setHasFixedSize(true);
+
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this.getContext(),3);
+        categoryRecyclerView.setLayoutManager(mLayoutManager);
+        cCategories = new ArrayList<>();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Categories");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+                    Category category = postSnapshot.getValue(Category.class);
+                    cCategories.add(category);
+                }
+                categoryAdapter = new CategoryAdapter(getContext(),cCategories);
+                categoryRecyclerView.setAdapter(categoryAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(),error.getMessage(), Toast.LENGTH_LONG);
+
+            }
+        });
+    }
+
+}
+
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+
+
+    import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridLayout;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+
+
+
+    public class UserHomePageButton extends Fragment {
     ViewPager viewPager;
     ViewPager viewPager2;
     CircleIndicator circleSlider;
@@ -60,6 +428,7 @@ public class UserHomePageButton extends Fragment {
         View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
 
         recyclerView = v.findViewById(R.id.recylePencere);
+        recyclerView.setHasFixedSize(true);
         recyclerManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(recyclerManager);
 
@@ -144,6 +513,18 @@ public class UserHomePageButton extends Fragment {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+     */
 
 
 /*
