@@ -41,14 +41,7 @@ public class UserHomePageButton extends Fragment {
     private CategoryAdapter categoryAdapter;
     private List<Category> cCategories;
 
-
-
-
     RecyclerView.LayoutManager recyclerManager;
-
-
-
-
 
     public UserHomePageButton(){
 

@@ -29,20 +29,20 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:clickable="true"
-                    android:scaleType="fitXY"
                     android:layout_marginBottom="30dp"
-                    android:focusable="true" />
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="fitXY" />
 
                 <TextView
-                    android:id="@+id/categoryName"
+                    android:id="@+id/ProductCategoryName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:padding="5dp"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="17sp"
                     android:textAlignment="center"
-                    android:gravity="center_horizontal" />
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="17sp" />
 
 
             </LinearLayout>
