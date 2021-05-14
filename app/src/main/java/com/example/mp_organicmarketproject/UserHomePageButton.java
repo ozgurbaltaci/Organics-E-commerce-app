@@ -55,16 +55,11 @@ public class UserHomePageButton extends Fragment {
         imageList = new ArrayList<>();
         View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
 
-
         setAdapter(v);
+
         readDatabase();
 
-
-
-
-
         showCategories(v);
-
 
      return v;
 

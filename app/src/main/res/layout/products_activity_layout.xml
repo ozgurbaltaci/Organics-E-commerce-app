@@ -22,30 +22,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ProductCategoryTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pacifico"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.152" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_recyclerView"
-        android:layout_width="389dp"
-        android:layout_height="458dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerProducts"
+        android:layout_width="395dp"
+        android:layout_height="586dp"
+        android:layout_above="@id/productsBottomBar"
+        android:layout_centerInParent="true"
+
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
+        tools:ignore="MissingConstraints">
+
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/productsBottomBar"
@@ -57,7 +49,6 @@
 
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/product_recyclerView"
         app:layout_constraintVertical_bias="1.0"
         app:tabBackground="@color/teal_700"
         app:tabIconTint="@color/teal_200"
