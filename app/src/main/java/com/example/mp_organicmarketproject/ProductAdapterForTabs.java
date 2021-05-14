@@ -7,17 +7,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-public class ProductAdapterDeneme extends FragmentPagerAdapter {
+public class ProductAdapterForTabs extends FragmentPagerAdapter {
 
 
     Context context;
     int totalTabs;
 
-    public ProductAdapterDeneme(@NonNull FragmentManager fm) {
+    public ProductAdapterForTabs(@NonNull FragmentManager fm) {
 
         super(fm);
     }
-    public ProductAdapterDeneme(Context c, FragmentManager fm, int totalTabs){
+    public ProductAdapterForTabs(Context c, FragmentManager fm, int totalTabs){
         super(fm);
         this.context = c;
         this.totalTabs = totalTabs;
@@ -31,7 +31,7 @@ public class ProductAdapterDeneme extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new ProductFragmentDeneme();
+                return new ProductFragment();
             case 1:
                 return new UserSearchButton();
             case 2:

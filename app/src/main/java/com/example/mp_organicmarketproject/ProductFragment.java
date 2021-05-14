@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,17 +19,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductFragmentDeneme extends Fragment {
+public class ProductFragment extends Fragment {
 
      RecyclerView productsRecyclerView;
      RecyclerView.LayoutManager recyclerProductManager;
-     String currentCategory;
      TextView productCategoryTitle;
+     String currentCategory;
+
     private List<Product> products;
 
     private ProductsAdapter productsAdapter;
@@ -40,12 +38,14 @@ public class ProductFragmentDeneme extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.deneme_product, container, false);
+        View v = inflater.inflate(R.layout.product_fragment_layout, container, false);
+        currentCategory = getActivity().getIntent().getStringExtra("Category");
         currentCategory = getActivity().getIntent().getStringExtra("Category");
         System.out.println(currentCategory + " ye tıklandı.");
 
         productCategoryTitle = v.findViewById(R.id.ProductCategoryTitle);
         productCategoryTitle.setText(currentCategory);
+
         showProducts(v);
         
         return v;
