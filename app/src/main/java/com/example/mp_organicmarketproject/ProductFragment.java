@@ -40,7 +40,6 @@ public class ProductFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.product_fragment_layout, container, false);
         currentCategory = getActivity().getIntent().getStringExtra("Category");
-        currentCategory = getActivity().getIntent().getStringExtra("Category");
         System.out.println(currentCategory + " ye tıklandı.");
 
         productCategoryTitle = v.findViewById(R.id.ProductCategoryTitle);

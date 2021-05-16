@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,9 +39,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ImageV
     public void onBindViewHolder(@NonNull CategoryAdapter.ImageViewHolder holder, int position) {
 
         Category categoryCur = categories.get(position);
+
         holder.categoryName.setText(categoryCur.getCategoryName());
         Picasso.get().load(categoryCur.getCategoryPhoto()).placeholder(R.drawable.imagepreview)
                 .fit().centerCrop().into(holder.categoryPhoto);
+
+
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

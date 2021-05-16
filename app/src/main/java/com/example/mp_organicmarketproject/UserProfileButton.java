@@ -43,6 +43,7 @@ public class UserProfileButton extends Fragment {
                 myAuth.signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });

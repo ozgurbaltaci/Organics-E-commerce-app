@@ -7,7 +7,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/Product_card_view"
+        android:id="@+id/newProducts_card_view"
         android:layout_width="195dp"
         android:layout_height="182dp"
         android:layout_gravity="center"
@@ -19,14 +19,14 @@
         tools:targetApi="lollipop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/productWrapper"
+            android:id="@+id/newProductsWrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
 
             <ImageView
-                android:id="@+id/ProductcategoryPhoto"
+                android:id="@+id/newProductsPhoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -41,7 +41,7 @@
                 card_view:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/ProductCategoryName"
+                android:id="@+id/newProductName"
                 android:layout_width="136dp"
                 android:layout_height="63dp"
                 android:layout_marginTop="8dp"
@@ -52,11 +52,11 @@
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.152"
                 card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/ProductcategoryPhoto"
+                card_view:layout_constraintTop_toBottomOf="@+id/newProductsPhoto"
                 card_view:layout_constraintVertical_bias="0.909" />
 
             <ImageButton
-                android:id="@+id/HeartShape"
+                android:id="@+id/newProductsHeartShape"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginTop="1dp"
@@ -72,7 +72,7 @@
                 card_view:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/ProductPrice"
+                android:id="@+id/newProductPrice"
                 android:layout_width="44dp"
                 android:layout_height="26dp"
                 android:layout_marginEnd="2dp"
@@ -87,13 +87,13 @@
                 card_view:layout_constraintVertical_bias="0.993" />
 
             <ImageButton
-                android:id="@+id/cartShape"
+                android:id="@+id/newProductscartShape"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_marginBottom="3dp"
                 android:src="@drawable/cart"
                 android:visibility="visible"
-                card_view:layout_constraintBottom_toTopOf="@+id/ProductPrice"
+                card_view:layout_constraintBottom_toTopOf="@+id/newProductPrice"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.923"
                 card_view:layout_constraintStart_toStartOf="parent"

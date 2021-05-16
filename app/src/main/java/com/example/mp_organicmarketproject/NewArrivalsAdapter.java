@@ -9,35 +9,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageViewHolder> {
+public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.ImageViewHolder> {
     private Context context;
-    private List<Product> products;
+    private List<NewProducts> productsList;
 
-
-    public ProductsAdapter(Context context, List<Product> products) {
+    public NewArrivalsAdapter(Context context, List<NewProducts> productsList) {
         this.context = context;
-        this.products = products;
+        this.productsList = productsList;
     }
+
 
 
     @NonNull
     @Override
-    public ProductsAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.products, parent, false);
-        return new ProductsAdapter.ImageViewHolder(v);
+    public NewArrivalsAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.new_products, parent, false);
+        return new ImageViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductsAdapter.ImageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewArrivalsAdapter.ImageViewHolder holder, int position) {
 
-        Product currProduct = products.get(position);
+        NewProducts currProduct = productsList.get(position);
         holder.productName.setText(currProduct.getproductName());
         holder.productPrice.setText(currProduct.getproductPrice());
         Picasso.get().load(currProduct.getproductPhoto()).placeholder(R.drawable.imagepreview)
@@ -48,9 +47,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
             public void onClick(View v) {
                 holder.count++;
                 if(holder.count % 2 != 0)
-                    holder.favoriteButton.setImageResource(R.drawable.fullheart);
+                    holder.favoriteButton.setImageResource(R.drawable.smallfullheart);
                 else
-                    holder.favoriteButton.setImageResource(R.drawable.emptyheart);
+                    holder.favoriteButton.setImageResource(R.drawable.smallemptyheart);
             }
         });
 
@@ -58,7 +57,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return productsList.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
@@ -73,8 +72,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
             super(itemView);
             this.productName = itemView.findViewById(R.id.newProductName);
             this.productPhoto = itemView.findViewById(R.id.newProductsPhoto);
-            this.productPrice = itemView.findViewById(R.id.newProductPrice);
-            this.favoriteButton = itemView.findViewById(R.id.newProductsHeartShape);
+            productPrice = itemView.findViewById(R.id.newProductsPrice);
+            favoriteButton = itemView.findViewById(R.id.newProductsHeartShape);
             count = 0;
             view = itemView;
 
