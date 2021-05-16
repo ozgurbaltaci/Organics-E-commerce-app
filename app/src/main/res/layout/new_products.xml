@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/newProducts_card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+
+        android:elevation="3dp"
+
+        card_view:cardCornerRadius="2dp"
+        tools:targetApi="lollipop">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/newProductsWrapper"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/newProductsPhoto"
+                    android:layout_width="69dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:scaleType="fitXY"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.195"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintVertical_bias="0.017" />
+
+                <TextView
+                    android:id="@+id/newProductName"
+                    android:layout_width="96dp"
+                    android:layout_height="43dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="17sp"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.032"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toBottomOf="@+id/newProductsPhoto"
+                    card_view:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/newProductsHeartShape"
+                    android:layout_width="23dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/smallemptyheart"
+                    android:visibility="visible"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.863"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/newProductsPrice"
+                    android:layout_width="37dp"
+                    android:layout_height="17dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center|top"
+                    card_view:layout_constraintBottom_toBottomOf="parent"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.941"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintVertical_bias="1.0" />
+
+                <ImageButton
+                    android:id="@+id/newProductscartShape"
+                    android:layout_width="26dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="68dp"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/cart"
+                    android:visibility="visible"
+                    card_view:layout_constraintBottom_toTopOf="@+id/ProductPrice"
+                    card_view:layout_constraintEnd_toEndOf="parent"
+                    card_view:layout_constraintHorizontal_bias="0.885"
+                    card_view:layout_constraintStart_toStartOf="parent"
+                    card_view:layout_constraintTop_toTopOf="parent"
+                    card_view:layout_constraintVertical_bias="1.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

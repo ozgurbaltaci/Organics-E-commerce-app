@@ -40,8 +40,12 @@ public class UserHomePageButton extends Fragment {
     private RecyclerView categoryRecyclerView;
     private CategoryAdapter categoryAdapter;
     private List<Category> cCategories;
+    private RecyclerView newArrivalsRecyclerView;
+    private NewArrivalsAdapter newArrivalsAdapter;
+    private List <NewProducts> newProductsList;
 
     RecyclerView.LayoutManager recyclerManager;
+
 
     public UserHomePageButton(){
 
@@ -56,6 +60,8 @@ public class UserHomePageButton extends Fragment {
         View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
 
         setAdapter(v);
+
+        showNewArrivals(v);
 
         readDatabase();
 
@@ -91,19 +97,13 @@ public class UserHomePageButton extends Fragment {
                 recyclerView.setAdapter(adapterHome);
                 timer1();
 
-
-
             }
-
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-
 
     }
 
@@ -127,6 +127,36 @@ public class UserHomePageButton extends Fragment {
         };
         handler.postDelayed(runnable, interval_time);
     }
+
+    public void showNewArrivals(View v){
+        newArrivalsRecyclerView = v.findViewById(R.id.newArrivals);
+        newArrivalsRecyclerView.setHasFixedSize(true);
+        newArrivalsRecyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(),LinearLayoutManager.HORIZONTAL,false));
+        newProductsList = new ArrayList<>();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("New Arrivals");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot: snapshot.getChildren()){
+                    NewProducts newProduct = postSnapshot.getValue(NewProducts.class);
+                    newProductsList.add(newProduct);
+                }
+                newArrivalsAdapter = new NewArrivalsAdapter(getContext(),newProductsList);
+                newArrivalsRecyclerView.setAdapter(newArrivalsAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(),error.getMessage(), Toast.LENGTH_LONG);
+
+            }
+        });
+
+    }
+
+
     public void showCategories(View v){
         categoryRecyclerView= v.findViewById(R.id.category_view);
         categoryRecyclerView.setNestedScrollingEnabled(false);
