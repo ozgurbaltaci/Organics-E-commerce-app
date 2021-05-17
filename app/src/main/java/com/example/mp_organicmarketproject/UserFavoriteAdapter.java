@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mp_organicmarketproject.dto.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,43 +23,41 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.ImageViewHolder> {
+public class UserFavoriteAdapter extends RecyclerView.Adapter<UserFavoriteAdapter.ImageViewHolder> {
     private Context context;
-    private List<NewProducts> productsList;
+    private List<UserFavorite> userFavoritesList;
     FirebaseAuth auth;
     DatabaseReference databaseReference;
     FirebaseUser user;
 
-    public NewArrivalsAdapter(Context context, List<NewProducts> productsList) {
+
+    public UserFavoriteAdapter(Context context, List<UserFavorite> userFavorites) {
         this.context = context;
-        this.productsList = productsList;
-
+        this.userFavoritesList = userFavorites;
     }
-
 
 
     @NonNull
     @Override
-    public NewArrivalsAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.new_products, parent, false);
+    public UserFavoriteAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.products, parent, false);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        return new ImageViewHolder(v);
+        return new UserFavoriteAdapter.ImageViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewArrivalsAdapter.ImageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserFavoriteAdapter.ImageViewHolder holder, int position) {
 
-        NewProducts currProduct = productsList.get(position);
+        UserFavorite currProduct = userFavoritesList.get(position);
         holder.productName.setText(currProduct.getproductName());
         holder.productPrice.setText(currProduct.getproductPrice());
-
         databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
-                    holder.favoriteButton.setImageResource(R.drawable.smallfullheart);
+                    holder.favoriteButton.setImageResource(R.drawable.fullheart);
                     holder.count++;
                 }
             }
@@ -68,7 +67,6 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
 
             }
         });
-
         Picasso.get().load(currProduct.getproductPhoto()).placeholder(R.drawable.imagepreview)
                 .fit().centerCrop().into(holder.productPhoto);
 
@@ -79,12 +77,12 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
                 UserFavorite userFavorite = new UserFavorite(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice());
 
                 if(holder.count % 2 != 0) {
-                    holder.favoriteButton.setImageResource(R.drawable.smallfullheart);
+                    holder.favoriteButton.setImageResource(R.drawable.fullheart);
                     databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).setValue(userFavorite);
                 }
 
                 else {
-                    holder.favoriteButton.setImageResource(R.drawable.smallemptyheart);
+                    holder.favoriteButton.setImageResource(R.drawable.emptyheart);
                     databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).removeValue();
 
                 }
@@ -96,7 +94,7 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
 
     @Override
     public int getItemCount() {
-        return productsList.size();
+        return userFavoritesList.size();
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
@@ -111,8 +109,8 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
             super(itemView);
             this.productName = itemView.findViewById(R.id.newProductName);
             this.productPhoto = itemView.findViewById(R.id.newProductsPhoto);
-            productPrice = itemView.findViewById(R.id.newProductsPrice);
-            favoriteButton = itemView.findViewById(R.id.newProductsHeartShape);
+            this.productPrice = itemView.findViewById(R.id.newProductPrice);
+            this.favoriteButton = itemView.findViewById(R.id.newProductsHeartShape);
             count = 0;
             view = itemView;
 
