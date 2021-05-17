@@ -53,7 +53,7 @@ public class ProductFragment extends Fragment {
 
     public void showProducts(View v){
         productsRecyclerView= v.findViewById(R.id.product_recyclerView);
-//        productsRecyclerView.setNestedScrollingEnabled(false);
+        productsRecyclerView.setNestedScrollingEnabled(false);
         productsRecyclerView.setHasFixedSize(true);
 
 

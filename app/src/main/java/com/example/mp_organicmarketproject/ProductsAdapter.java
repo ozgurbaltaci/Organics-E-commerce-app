@@ -12,6 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mp_organicmarketproject.dto.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,6 +27,9 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageViewHolder> {
     private Context context;
     private List<Product> products;
+    FirebaseAuth auth;
+    DatabaseReference databaseReference;
+    FirebaseUser user;
 
 
     public ProductsAdapter(Context context, List<Product> products) {
@@ -31,6 +42,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
     @Override
     public ProductsAdapter.ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.products, parent, false);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         return new ProductsAdapter.ImageViewHolder(v);
     }
 
@@ -40,6 +54,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
         Product currProduct = products.get(position);
         holder.productName.setText(currProduct.getproductName());
         holder.productPrice.setText(currProduct.getproductPrice());
+        databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    holder.favoriteButton.setImageResource(R.drawable.fullheart);
+                    holder.count++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         Picasso.get().load(currProduct.getproductPhoto()).placeholder(R.drawable.imagepreview)
                 .fit().centerCrop().into(holder.productPhoto);
 
@@ -47,10 +75,19 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ImageV
             @Override
             public void onClick(View v) {
                 holder.count++;
-                if(holder.count % 2 != 0)
+                UserFavorite userFavorite = new UserFavorite(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice());
+
+                if(holder.count % 2 != 0) {
                     holder.favoriteButton.setImageResource(R.drawable.fullheart);
-                else
+                    databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).setValue(userFavorite);
+                }
+
+                else {
                     holder.favoriteButton.setImageResource(R.drawable.emptyheart);
+                    databaseReference.child("User Favorites").child(user.getUid()).child(currProduct.getproductName()).removeValue();
+
+                }
+
             }
         });
 
