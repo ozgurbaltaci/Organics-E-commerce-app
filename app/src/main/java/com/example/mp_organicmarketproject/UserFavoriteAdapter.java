@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -90,6 +91,35 @@ public class UserFavoriteAdapter extends RecyclerView.Adapter<UserFavoriteAdapte
             }
         });
 
+        holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference userCartReference = databaseReference.child("User Cart").child(user.getUid()).child(currProduct.getproductName());
+
+                AddedProductInCart addedProductInCart = new AddedProductInCart(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice());
+                userCartReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.exists()){
+
+                            userCartReference.setValue(addedProductInCart);
+                            Toast.makeText(v.getContext(), addedProductInCart.getproductName() + " added to your cart !",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(v.getContext(), "You have already added the " + addedProductInCart.getproductName()
+                                    + "  to your cart.You can remove it or increase desired amount of it in your cart! " , Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+        });
+
     }
 
     @Override
@@ -102,6 +132,7 @@ public class UserFavoriteAdapter extends RecyclerView.Adapter<UserFavoriteAdapte
         public ImageView productPhoto;
         public TextView productPrice;
         public ImageButton favoriteButton;
+        public ImageButton addToCartButton;
         public int count;
         View view;
 
@@ -111,6 +142,7 @@ public class UserFavoriteAdapter extends RecyclerView.Adapter<UserFavoriteAdapte
             this.productPhoto = itemView.findViewById(R.id.newProductsPhoto);
             this.productPrice = itemView.findViewById(R.id.newProductPrice);
             this.favoriteButton = itemView.findViewById(R.id.newProductsHeartShape);
+            this.addToCartButton = itemView.findViewById(R.id.newProductscartShape);
             count = 0;
             view = itemView;
 
