@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.mp_organicmarketproject.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ public class UserCartButton extends Fragment {
     CartAdapter userCartAdapter;
     FirebaseUser user;
     TextView totalPriceOfProducts;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public UserCartButton(){
 
@@ -49,14 +51,28 @@ public class UserCartButton extends Fragment {
         user = firebaseAuth.getCurrentUser();
         View v = inflater.inflate(R.layout.usercart_fragment, container, false);
         totalPriceOfProducts = v.findViewById(R.id.TotalPriceOfProducts);
+        swipeRefreshLayout = v.findViewById(R.id.cartRefresh);
         gettingUserInfo(v);
+
         showAddedProductsToCart(v);
         return v;
 
     }
 
 
+
     public void showAddedProductsToCart(View v){
+
+
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showAddedProductsToCart(v);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         cartRecyclerView= v.findViewById(R.id.userCartRecyclerView);
         cartRecyclerView.setHasFixedSize(true);
 
@@ -70,10 +86,14 @@ public class UserCartButton extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()){
-                    AddedProductInCart addedProduct = postSnapshot.getValue(AddedProductInCart.class);
-                    addedProductsInCart.add(addedProduct);
+                    if(snapshot.exists()){
+                        AddedProductInCart addedProduct = postSnapshot.getValue(AddedProductInCart.class);
+                        addedProductsInCart.add(addedProduct);
+                    }
+
                 }
-                userCartAdapter = new CartAdapter(getContext(),addedProductsInCart,v);
+
+                userCartAdapter = new CartAdapter(getContext(), addedProductsInCart, v);
                 cartRecyclerView.setAdapter(userCartAdapter);
             }
 
@@ -83,6 +103,7 @@ public class UserCartButton extends Fragment {
 
             }
         });
+
     }
 
     public void gettingUserInfo(View v){

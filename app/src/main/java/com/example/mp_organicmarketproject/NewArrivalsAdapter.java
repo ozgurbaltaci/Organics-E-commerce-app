@@ -106,7 +106,9 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
             public void onClick(View v) {
                 DatabaseReference userCartReference = databaseReference.child("User Cart").child(user.getUid()).child(currProduct.getproductName());
 
-                AddedProductInCart addedProductInCart = new AddedProductInCart(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice());
+                String[] getDoublePrice = currProduct.getproductPrice().split("\\$");
+                double doublePriceOfCurrProduct = Double.parseDouble(getDoublePrice[0]);
+                AddedProductInCart addedProductInCart = new AddedProductInCart(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice(),1);
                 userCartReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

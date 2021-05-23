@@ -49,16 +49,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.124" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userCartRecyclerView"
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/cartRefresh"
         android:layout_width="398dp"
         android:layout_height="343dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+        app:layout_constraintTop_toTopOf="@+id/ourTitle"
+        app:layout_constraintVertical_bias="0.422">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/userCartRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="13dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <TextView
         android:id="@+id/productsText"
@@ -71,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.607"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userCartRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/cartRefresh"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
