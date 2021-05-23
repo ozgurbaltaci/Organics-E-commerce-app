@@ -2,14 +2,16 @@ package com.example.mp_organicmarketproject;
 
 public class AddedProductInCart {
     private String productName, productPhoto,productPrice;
+    int desiredAmount;
 
     public AddedProductInCart(){
 
     }
-    public AddedProductInCart(String productName, String productPhoto, String productPrice){
+    public AddedProductInCart(String productName, String productPhoto, String productPrice,int desiredAmount){
         this.productName = productName;
         this.productPhoto = productPhoto;
         this.productPrice = productPrice;
+        this.desiredAmount = desiredAmount;
 
     }
 
@@ -19,6 +21,14 @@ public class AddedProductInCart {
 
     public void setproductName(String productName) {
         this.productName = productName;
+    }
+
+    public int getDesiredAmount() {
+        return desiredAmount;
+    }
+
+    public void setDesiredAmount(int desiredAmount) {
+        this.desiredAmount = desiredAmount;
     }
 
     public String getproductPrice() {

@@ -96,7 +96,8 @@ public class UserFavoriteAdapter extends RecyclerView.Adapter<UserFavoriteAdapte
             public void onClick(View v) {
                 DatabaseReference userCartReference = databaseReference.child("User Cart").child(user.getUid()).child(currProduct.getproductName());
 
-                AddedProductInCart addedProductInCart = new AddedProductInCart(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice());
+
+                AddedProductInCart addedProductInCart = new AddedProductInCart(currProduct.getproductName(),currProduct.getproductPhoto(),currProduct.getproductPrice(),1);
                 userCartReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
