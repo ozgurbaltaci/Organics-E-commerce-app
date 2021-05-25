@@ -56,8 +56,23 @@
                 android:layout_margin="10dp"
                 android:layout_marginTop="20dp"
                 android:clipToPadding="false" />
+
+
         </LinearLayout>
 
+        <ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator
+            android:id="@+id/indicatior1"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="51dp"
+            android:layout_marginLeft="51dp"
+            android:layout_marginEnd="156dp"
+            android:layout_marginRight="156dp"
+            android:layout_marginBottom="34dp"
+            app:layout_constraintBottom_toTopOf="@+id/newArrivals"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutRecycler" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/newArrivals"

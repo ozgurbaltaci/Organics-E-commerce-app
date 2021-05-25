@@ -44,6 +44,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation "ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6"
 
 }
 
