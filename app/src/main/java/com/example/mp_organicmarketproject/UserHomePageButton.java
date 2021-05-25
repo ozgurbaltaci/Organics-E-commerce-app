@@ -116,7 +116,7 @@ public class UserHomePageButton extends Fragment {
 
 
     private void autoScrollWithIndicator() {
-        final int time = 4000; // it's the delay time for sliding between items in recyclerview
+        final int time = 7000; // it's the delay time for sliding between items in recyclerview
 
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
