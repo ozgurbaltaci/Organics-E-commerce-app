@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -27,8 +28,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 
 public class UserHomePageButton extends Fragment {
 
@@ -43,7 +47,7 @@ public class UserHomePageButton extends Fragment {
     private RecyclerView newArrivalsRecyclerView;
     private NewArrivalsAdapter newArrivalsAdapter;
     private List <NewProducts> newProductsList;
-
+    ScrollingPagerIndicator recyclerIndicator;
     RecyclerView.LayoutManager recyclerManager;
 
 
@@ -59,6 +63,7 @@ public class UserHomePageButton extends Fragment {
         imageList = new ArrayList<>();
         View v = inflater.inflate(R.layout.userhomepage_fragment, container, false);
 
+        recyclerIndicator = v.findViewById(R.id.indicatior1);
         setAdapter(v);
 
         showNewArrivals(v);
@@ -74,8 +79,9 @@ public class UserHomePageButton extends Fragment {
     private void setAdapter(View v) {
         recyclerView = v.findViewById(R.id.recylePencere);
         recyclerView.setHasFixedSize(true);
-        recyclerManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, true);
-        recyclerView.setLayoutManager(recyclerManager);
+        //recyclerManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, true);
+        //recyclerView.setLayoutManager(recyclerManager);
+
     }
 
 
@@ -95,7 +101,8 @@ public class UserHomePageButton extends Fragment {
 
                 adapterHome = new AdapterHome(imageList);
                 recyclerView.setAdapter(adapterHome);
-                timer1();
+                autoScrollWithIndicator();
+               // timer1();
 
             }
 
@@ -108,6 +115,29 @@ public class UserHomePageButton extends Fragment {
     }
 
 
+    private void autoScrollWithIndicator() {
+        final int time = 4000; // it's the delay time for sliding between items in recyclerview
+
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        final LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
+        linearSnapHelper.attachToRecyclerView(recyclerView);
+        recyclerIndicator.attachToRecyclerView(recyclerView);
+
+        final Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (linearLayoutManager.findLastCompletelyVisibleItemPosition() < (adapterHome.getItemCount() - 1)) {
+                    linearLayoutManager.smoothScrollToPosition(recyclerView, new RecyclerView.State(), linearLayoutManager.findLastCompletelyVisibleItemPosition() + 1);
+                } else if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == (adapterHome.getItemCount() - 1)) {
+                    linearLayoutManager.smoothScrollToPosition(recyclerView, new RecyclerView.State(), 0);
+                }
+            }
+        }, 0, time);
+
+
+/*
     public void timer1(){
         final int interval_time = 5000;
         Handler handler = new Handler();
@@ -126,8 +156,8 @@ public class UserHomePageButton extends Fragment {
             }
         };
         handler.postDelayed(runnable, interval_time);
+    }*/
     }
-
     public void showNewArrivals(View v){
         newArrivalsRecyclerView = v.findViewById(R.id.newArrivals);
         newArrivalsRecyclerView.setHasFixedSize(true);
