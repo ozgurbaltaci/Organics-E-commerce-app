@@ -34,12 +34,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.625" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="360dp"
-        android:layout_height="376dp"
+        android:layout_width="363dp"
+        android:layout_height="358dp"
         android:layout_marginTop="72dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/myProfile"
+            android:layout_width="343dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/rectbutton"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:drawableTint="#E33957"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="My Profile"
+            android:textColor="#E33957" />
+
+        <Button
+            android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -94,19 +107,6 @@
             android:drawableTint="#E33957"
             android:padding="10dp"
             android:text="Settings"
-            android:textColor="#E33957" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/rectbutton"
-            android:drawableLeft="@drawable/ic_baseline_delivery_dining_24"
-            android:drawableTint="#E33957"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="My Orders"
             android:textColor="#E33957" />
 
     </LinearLayout>

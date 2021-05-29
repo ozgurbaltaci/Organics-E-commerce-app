@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ProductsActivity"></activity>
+        <activity android:name=".MyProfilePageActivity"></activity>
+        <activity android:name=".ProductsActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".SellerRegisterActivity" />
         <activity android:name=".LoginActivity">
