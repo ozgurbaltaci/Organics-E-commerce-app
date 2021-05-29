@@ -26,10 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserSearchButton extends Fragment {
-        RadioButton radioButton1,radioButton2,radioButton3,radioButton4,radioButton5,radioButton6,radioButton7,radioButton8;
         RecyclerView cardView ;
         ProductsAdapter adapterProducts;
         RadioGroup group;
+         RadioGroup group2;
         FirebaseDatabase database;
         DatabaseReference databaseReference;
         List<Product> productList;
@@ -46,9 +46,9 @@ public class UserSearchButton extends Fragment {
         View view =inflater.inflate(R.layout.usersearch_fragment, container, false);
             cardView = view.findViewById(R.id.listOfAllCategories);
         group = view.findViewById(R.id.radioButtonGroup);
+        group2 = view.findViewById(R.id.radioButtonGroup2);
 
 
-        RadioButton button111 = view.findViewById(R.id.radioButton);
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -60,6 +60,21 @@ public class UserSearchButton extends Fragment {
 
             }
         });
+
+
+        group2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int id = group.getCheckedRadioButtonId();
+
+                RadioButton radioButtonCurrent = view.findViewById(id);
+                String currentCategory = "Category:"+radioButtonCurrent.getText().toString();
+                buttonGroupDatabase(currentCategory);
+
+            }
+        });
+
+
         layoutManager = new GridLayoutManager(getContext(),2);
         //layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         cardView.setLayoutManager(layoutManager);
