@@ -48,6 +48,21 @@ public class UserProfileButton extends Fragment {
             }
         });
 
+
+
+        Button buttonProfile = (Button)view.findViewById(R.id.myProfile);
+        buttonProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyProfilePageActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+            }
+        });
+
+
+
         return view;
     }
 
