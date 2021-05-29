@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,11 +25,9 @@ public class MyProfilePageActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     FirebaseUser user;
+    EditText textViewUser, textViewUserSurname, phoneNumber;
 
-    private TextView occupationTextView, nameTextView, workTextView;
-    private TextView emailTextView, phoneTextView, videoTextView;
-    private ImageView userImageView, emailImageView, phoneImageView;
-    private String password, email;
+
 
     private FirebaseDatabase database;
     private DatabaseReference userRef;
@@ -40,57 +41,59 @@ public class MyProfilePageActivity extends AppCompatActivity {
         databaseReference =  FirebaseDatabase.getInstance().getReference();
         user = firebaseAuth.getCurrentUser();
 
+
+        textViewUser = findViewById(R.id.userNameSurname);
+        textViewUserSurname =  findViewById(R.id.userSurname2);
+        phoneNumber =  findViewById(R.id.phoneNumberUser);
+
+
         gettingUserInfo();
-
-/*
-        Intent intent = getIntent();
-         email = intent.getStringExtra("email");
-         nameTextView = findViewById(R.id.username_textview1);
-        emailTextView = findViewById(R.id.email_textview1);
-
-        database = FirebaseDatabase.getInstance();
-        userRef = database.getReference(USERS);
-
-        databaseReference.child("users").child(firebaseAuth.getUid()).get()
-                .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        if(task.isSuccessful()){
-                            User user = task.getResult().getValue(User.class);
-                            TextView textViewUser = (TextView) v.findViewById(R.id.favoritesUserInfo);
-                            textViewUser.setText( user.name + " " + user.surname );
-                        }
-                        else{
-
-                            System.out.println(task.getException().getMessage());
-
-                        }
-                    }
-                });
-        */
-
+        changeInformation();
     }
 
 
+
+    public void changeInformation(){
+        Button changeButton = findViewById(R.id.changeInfoButton);
+
+
+        changeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                String name = textViewUser.getText().toString();
+                String phone = phoneNumber.getText().toString();
+                String surname = textViewUserSurname.getText().toString();
+
+                databaseReference.child("users").child(firebaseAuth.getUid()).child("name").setValue(name);
+                databaseReference.child("users").child(firebaseAuth.getUid()).child("phone").setValue(phone);
+                databaseReference.child("users").child(firebaseAuth.getUid()).child("surname").setValue(surname);
+
+            }
+        });
+
+    }
     public void gettingUserInfo(){
+
+
+
         TextView emailAddressUser = (TextView) findViewById(R.id.emailAddressTitle);
         emailAddressUser.setText(firebaseAuth.getCurrentUser().getEmail());
+
+        emailAddressUser.setFocusable(false);
+
         databaseReference.child("users").child(firebaseAuth.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if(task.isSuccessful()){
                             User user = task.getResult().getValue(User.class);
-                            TextView textViewUser = (TextView) findViewById(R.id.userNameSurname);
-                            TextView textViewUserSurname = (TextView) findViewById(R.id.userSurname2);
 
-                            TextView phoneNumber = (TextView) findViewById(R.id.phoneNumberUser);
 
                             textViewUser.setText( user.name );
                             textViewUserSurname.setText( user.surname );
-
                             phoneNumber.setText( user.phone  );
-
                         }
                         else{
 
