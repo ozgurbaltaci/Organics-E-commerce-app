@@ -7,45 +7,17 @@
     tools:context=".UserSearchButton">
 
 
-    <RadioGroup
-        android:id="@+id/radioButtonGroup"
-
-        android:layout_width="412dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="60dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/listOfAllCategories"
+    <SearchView
+        android:id="@+id/searchViewOnSearch"
+        android:layout_width="342dp"
+        android:layout_height="34dp"
+        android:background="#DBD6E1"
+        android:queryHint="Search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.02">
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dried Fruits" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:text="Jam" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="85dp"
-            android:layout_height="wrap_content"
-            android:text="Honey" />
-
-        <RadioButton
-            android:id="@+id/radioButton4_2"
-            android:layout_width="123dp"
-            android:layout_height="wrap_content"
-            android:text="Mollasses" />
-
-    </RadioGroup>
 
     <TextView
         android:id="@+id/textView17"
@@ -60,58 +32,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radioButtonGroup2"
-
-        android:layout_width="412dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/listOfAllCategories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.02">
-
-
-        <RadioButton
-            android:id="@+id/radioButton5_2"
-            android:layout_width="104dp"
-            android:layout_height="wrap_content"
-            android:text="Nuts" />
-
-        <RadioButton
-            android:id="@+id/radioButton8_2"
-            android:layout_width="94dp"
-            android:layout_height="wrap_content"
-            android:text="Vinegar" />
-
-        <RadioButton
-            android:id="@+id/radioButton6_2"
-            android:layout_width="115dp"
-            android:layout_height="wrap_content"
-            android:text="Olive Oil" />
-
-        <RadioButton
-            android:id="@+id/radioButton7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pastes" />
-
-    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listOfAllCategories"
-        android:layout_width="406dp"
-        android:layout_height="510dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="397dp"
+        android:layout_height="554dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButtonGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/searchViewOnSearch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

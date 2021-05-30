@@ -51,8 +51,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecyclerView"
-        android:layout_width="403dp"
-        android:layout_height="499dp"
+        android:layout_width="398dp"
+        android:layout_height="498dp"
         android:layout_marginTop="164dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

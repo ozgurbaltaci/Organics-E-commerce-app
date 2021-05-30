@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/newProducts_card_view"
-        android:layout_width="195dp"
+        android:layout_width="188dp"
         android:layout_height="182dp"
         android:layout_gravity="center"
         android:layout_margin="5dp"
@@ -20,7 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/newProductsWrapper"
-            android:layout_width="match_parent"
+            android:layout_width="188dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -35,25 +35,25 @@
                 android:scaleType="fitXY"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.47"
+                card_view:layout_constraintHorizontal_bias="0.341"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintVertical_bias="0.0" />
+                card_view:layout_constraintVertical_bias="0.012" />
 
             <TextView
                 android:id="@+id/newProductName"
-                android:layout_width="136dp"
-                android:layout_height="63dp"
+                android:layout_width="115dp"
+                android:layout_height="59dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="17sp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.152"
+                card_view:layout_constraintHorizontal_bias="0.085"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/newProductsPhoto"
-                card_view:layout_constraintVertical_bias="0.909" />
+                card_view:layout_constraintVertical_bias="0.857" />
 
             <ImageButton
                 android:id="@+id/newProductsHeartShape"
@@ -66,25 +66,25 @@
                 android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.981"
+                card_view:layout_constraintHorizontal_bias="0.946"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/newProductPrice"
-                android:layout_width="44dp"
+                android:layout_width="47dp"
                 android:layout_height="26dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center|top"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.986"
+                card_view:layout_constraintHorizontal_bias="0.941"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintVertical_bias="0.993" />
+                card_view:layout_constraintVertical_bias="1.0" />
 
             <ImageButton
                 android:id="@+id/newProductscartShape"
@@ -95,10 +95,10 @@
                 android:visibility="visible"
                 card_view:layout_constraintBottom_toTopOf="@+id/newProductPrice"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.923"
+                card_view:layout_constraintHorizontal_bias="0.886"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintVertical_bias="1.0" />
+                card_view:layout_constraintVertical_bias="0.991" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
