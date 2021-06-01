@@ -8,14 +8,13 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/bottomBar"
-        android:layout_width="411dp"
+        android:layout_width="408dp"
         android:layout_height="51dp"
-        android:layout_marginTop="8dp"
         android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager2"
         app:tabBackground="@color/teal_700"
         app:tabIconTint="@color/teal_200"
         app:tabIndicatorColor="@color/teal_200"

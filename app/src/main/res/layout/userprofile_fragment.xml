@@ -34,12 +34,12 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="363dp"
-        android:layout_height="358dp"
+        android:layout_width="368dp"
+        android:layout_height="309dp"
         android:layout_marginTop="72dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,18 +61,6 @@
             android:textColor="#E33957" />
 
         <Button
-            android:id="@+id/button6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/rectbutton"
-            android:drawableLeft="@drawable/ic_baseline_favorite_24"
-            android:drawableTint="#E33957"
-            android:padding="10dp"
-            android:text="My Favorite List"
-            android:textColor="#E33957" />
-
-        <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +73,7 @@
             android:textColor="#E33957" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/faqButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -97,7 +85,7 @@
             android:textColor="#E33957" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/userSettingsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
