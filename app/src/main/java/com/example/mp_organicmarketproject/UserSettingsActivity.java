@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mp_organicmarketproject.dto.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MyProfilePageActivity extends AppCompatActivity {
+public class UserSettingsActivity extends AppCompatActivity {
 
 
     private FirebaseAuth firebaseAuth;
@@ -36,7 +36,7 @@ public class MyProfilePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_profile_page);
+        setContentView(R.layout.activity_user_settings_page);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference =  FirebaseDatabase.getInstance().getReference();
         user = firebaseAuth.getCurrentUser();
@@ -65,10 +65,19 @@ public class MyProfilePageActivity extends AppCompatActivity {
                 String name = textViewUser.getText().toString();
                 String phone = phoneNumber.getText().toString();
                 String surname = textViewUserSurname.getText().toString();
+                if(name.length()<2 || surname.length()<2 || phoneNumber.length()<1)
+                    Toast.makeText(v.getContext(),"Please make sure you fill blanks correctly", Toast.LENGTH_SHORT).show();
 
-                databaseReference.child("users").child(firebaseAuth.getUid()).child("name").setValue(name);
-                databaseReference.child("users").child(firebaseAuth.getUid()).child("phone").setValue(phone);
-                databaseReference.child("users").child(firebaseAuth.getUid()).child("surname").setValue(surname);
+                else{
+                    databaseReference.child("users").child(firebaseAuth.getUid()).child("name").setValue(name);
+                    databaseReference.child("users").child(firebaseAuth.getUid()).child("phone").setValue(phone);
+                    databaseReference.child("users").child(firebaseAuth.getUid()).child("surname").setValue(surname);
+
+                    Toast.makeText(v.getContext(), "You changed your informations successfully!" , Toast.LENGTH_LONG).show();
+                }
+
+
+
 
             }
         });

@@ -6,10 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +17,9 @@ public class UserProfileButton extends Fragment {
 
 
     private FirebaseAuth myAuth;
+    Button settingsButton;
+    Button buttonProfile;
+    Button faqButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,10 @@ public class UserProfileButton extends Fragment {
         //output.setText("User Profile Fragment");
 
         Button button = (Button)view.findViewById(R.id.main_buttonLogout);
+        settingsButton = view.findViewById(R.id.userSettingsButton);
+        buttonProfile = (Button)view.findViewById(R.id.myProfile);
+        faqButton = (Button)view.findViewById(R.id.faqButton);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,29 +54,44 @@ public class UserProfileButton extends Fragment {
 
 
 
-        Button buttonProfile = (Button)view.findViewById(R.id.myProfile);
+
         buttonProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyProfilePageActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                Intent goToSetting = new Intent(getActivity(), UserProfileActivity.class);
+                startActivity(goToSetting);
 
             }
         });
 
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), UserSettingsActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        faqButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToFaq = new Intent (getActivity(), Faq_Activity.class);
+                startActivity(goToFaq);
+            }
+        });
 
 
         return view;
+
+
     }
-
-
-
-
 
     public UserProfileButton(){
 
     }
+
+
 
 /*
 
