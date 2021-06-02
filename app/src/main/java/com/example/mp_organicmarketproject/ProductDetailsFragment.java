@@ -69,7 +69,7 @@ public class ProductDetailsFragment extends Fragment {
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
                         if(task.isSuccessful()){
                             User user = task.getResult().getValue(User.class);
-                            userInfo = user.name + " " + user.surname;
+                            userInfo = user.email;
                         }
                         else{
 

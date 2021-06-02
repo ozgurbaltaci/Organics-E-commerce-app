@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
 
-        User userInfo = new User(name,surname,phoneNumber);
+        User userInfo = new User(name,surname,phoneNumber,email);
 
         if(!password.equals(confirmedPassword)){
             Toast.makeText(RegisterActivity.this,"Password and Confirm Password doesn't match.", Toast.LENGTH_SHORT).show();

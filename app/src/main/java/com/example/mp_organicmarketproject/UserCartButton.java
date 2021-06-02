@@ -63,9 +63,6 @@ public class UserCartButton extends Fragment {
 
     public void showAddedProductsToCart(View v){
 
-
-
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
