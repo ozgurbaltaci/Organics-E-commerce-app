@@ -17,7 +17,7 @@
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".ProductsActivity" />
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".SellerRegisterActivity" />
+        <activity android:name=".ProductsDetailsActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

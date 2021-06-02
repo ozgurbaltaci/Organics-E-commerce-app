@@ -1,7 +1,9 @@
 package com.example.mp_organicmarketproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,6 +131,15 @@ public class NewArrivalsAdapter extends RecyclerView.Adapter<NewArrivalsAdapter.
                     }
                 });
 
+            }
+        });
+
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToDetails = new Intent (context, ProductsDetailsActivity.class);
+                goToDetails.putExtra("Clicked product", currProduct.getproductName());
+                context.startActivity(goToDetails);
             }
         });
 
