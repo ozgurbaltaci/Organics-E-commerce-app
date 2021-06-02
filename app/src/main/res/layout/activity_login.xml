@@ -7,6 +7,22 @@
     tools:context=".LoginActivity">
 
     <TextView
+        android:id="@+id/adminLogin"
+        android:layout_width="117dp"
+        android:layout_height="27dp"
+        android:clickable="true"
+        android:onClick="goToAdminLogin"
+
+        android:text="Admin Login"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.909" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="100dp"
         android:layout_height="49dp"
@@ -148,4 +164,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.356" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Are you an admin ?"
+        tools:layout_editor_absoluteX="89dp"
+        tools:layout_editor_absoluteY="640dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

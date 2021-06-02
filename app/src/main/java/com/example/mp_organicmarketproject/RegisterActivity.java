@@ -44,10 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    public void createSeller (View view){
-        Intent goToSellerRegister = new Intent (this,SellerRegisterActivity.class);
-        startActivity(goToSellerRegister);
-    }
 
     public void goLoginFromRegister (View view){
         Intent goToLoginFromRegister = new Intent (this,LoginActivity.class);

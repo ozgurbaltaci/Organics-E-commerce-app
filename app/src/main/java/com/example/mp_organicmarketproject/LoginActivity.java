@@ -41,6 +41,11 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToAdminLogin (View view) {
+        Intent adminIntent = new Intent (this,AdminActivity.class);
+        startActivity(adminIntent);
+    }
+
 
 
     public void login(View view){
